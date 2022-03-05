@@ -23,11 +23,7 @@ global.transactions = []; // Our current transactions
 // Dynamically load all routes from the ./routes folder
 
 require("./routes")(app);
-require("./mine")(app);
-require("./listtransactions")(app);
-require("./chain")(app);
-require("./newtransaction")(app);
-require("./validate")(app);
+
 
 // Configure our server to run
 app.listen(port, () => {
