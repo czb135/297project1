@@ -3,6 +3,7 @@
 const express = require("express"); // Imports Express's class definition
 const morgan = require("morgan"); // Imports Morgan's class definition
 
+const Blockchain = require("./src/blockchain");
 // Initialize express's class object
 const app = express();
 // Tell Express to use Morgan for logging requests to the console
@@ -22,6 +23,11 @@ global.transactions = []; // Our current transactions
 // Dynamically load all routes from the ./routes folder
 
 require("./routes")(app);
+require("./mine")(app);
+require("./listtransactions")(app);
+require("./chain")(app);
+require("./newtransaction")(app);
+require("./validate")(app);
 
 // Configure our server to run
 app.listen(port, () => {
@@ -29,6 +35,4 @@ app.listen(port, () => {
     console.log(`Server is listening at http://localhost:${port}/`);
 });
 
-// Imports from our class modules
 
-const Blockchain = require("./src/blockchain");
